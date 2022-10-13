@@ -1,12 +1,5 @@
-# v$RESOLVED_VERSION 
-#   - version-resolver 옵션에 정의한 레이블에 따라 버전업 가능
-
-# 템플릿 이름
 name-template: 'v$RESOLVED_VERSION'
-# 템플릿 태그
 tag-template: 'v$RESOLVED_VERSION'
-
-# merge된 PR의 각 사항들을 릴리즈 노트에 보여줄 때 설정된 레이블에 대한 타이틀로 분류해줌
 categories:
   - title: 'Features'
     label: 'enhancement'
@@ -16,17 +9,8 @@ categories:
     label: 'bug'
   - title: 'Etcetera'
     label: 'documentation'
-
-# PR의 내용이 릴리즈 노트에 보여질 때의 형식을 지정해줌
-#   - $NUMBER : PR 넘버
-#   - $TITLE : PR 제목
-#   - $AUTHOR : PR한 사람
-#   - $BODY : PR 내용
-#   - $URL : PR URL
 change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
-change-title-escapes: '\<*_&'
-
-# 해당 옵션을 설정하고 레이블을 설정하면 설정된 브랜치로 PR시 붙인 레이블을 기반으로 버전을 올려줌
+change-title-escapes: '\<*_&' # You can add # and @ to disable mentions, and add ` to disable code blocks.
 version-resolver:
   major:
     labels:
@@ -38,10 +22,7 @@ version-resolver:
     labels:
       - 'patch'
   default: patch
-
-# 릴리즈 노트 전체 형식 정의
-#   - $CHANGES : 머지된 PR들의 리스트, categories에 의해 분류되지 않은 PR은 맨 위에 위치
-#   - $CHANGES : 머지된 PR들의 리스트, categories에 의해 분류되지 않은 PR은 맨 위에 위치
-#   - $CONTRIBUTORS : 프로젝트 현 릴리즈 기여자 목록
 template: |
+  ## 변경사항
+
   $CHANGES
