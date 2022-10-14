@@ -43,6 +43,5 @@ version-resolver:
 #   - $CHANGES : 머지된 PR들의 리스트, categories에 의해 분류되지 않은 PR은 맨 위로
 #   - $PREVIOUS_TAG : 이전 버전에 대한 태그
 #   - $CONTRIBUTORS : 프로젝트 현 릴리즈 기여자 목록
-
 template: |
   $CHANGES
