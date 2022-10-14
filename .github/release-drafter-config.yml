@@ -13,15 +13,6 @@ categories:
   - title: '🧰 Maintenance'
     label: 'chore'
 
-# PR 내용이 릴리즈 노트에 보여질때 형식
-#   - $NUMBER : PR 넘버
-#   - $TITLE : PR 제목
-#   - $AUTHOR : PR한 사람
-#   - $BODY : PR 내용
-#   - $URL : PR url
-change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
-change-title-escapes: '\<*_&'
-
 # 설정된 레이블을 기반으로 버전을 올려줌
 # version - v0.0.0
 #   - major : 첫번째 숫자를 올려줌 v1.0.0
@@ -38,6 +29,15 @@ version-resolver:
     labels:
       - 'patch'
   default: patch
+
+# PR 내용이 릴리즈 노트에 보여질때 형식
+#   - $NUMBER : PR 넘버
+#   - $TITLE : PR 제목
+#   - $AUTHOR : PR한 사람
+#   - $BODY : PR 내용
+#   - $URL : PR url
+change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
+change-title-escapes: '\<*_&'
 
 # 릴리즈 노트의 전체 형식
 #   - $CHANGES : 머지된 PR들의 리스트, categories에 의해 분류되지 않은 PR은 맨 위로
