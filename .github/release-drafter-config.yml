@@ -1,5 +1,10 @@
+# 릴리즈 명 - $RESOLVED_VERSION : version-resolver에 정의한 레이블에 따라 버전 변경
 name-template: 'v$RESOLVED_VERSION 🌈'
+
+# 태그 명 - $RESOLVED_VERSION : version-resolver에 정의한 레이블에 따라 태그 변경
 tag-template: 'v$RESOLVED_VERSION'
+
+# merge된 PR의 각 내용들을 카테고리에 설정된 레이블별로 분류해줌
 categories:
   - title: '🚀 Features'
     labels: 'feature'
@@ -7,8 +12,21 @@ categories:
     labels: 'bugFix'
   - title: '🧰 Maintenance'
     label: 'chore'
+
+# PR 내용이 릴리즈 노트에 보여질때 형식
+#   - $NUMBER : PR 넘버
+#   - $TITLE : PR 제목
+#   - $AUTHOR : PR한 사람
+#   - $BODY : PR 내용
+#   - $URL : PR url
 change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
 change-title-escapes: '\<*_&'
+
+# 설정된 레이블을 기반으로 버전을 올려줌
+# version - v0.0.0
+#   - major : 첫번째 숫자를 올려줌 v1.0.0
+#   - minor : 두번째 숫자를 올려줌 v0.1.0
+#   - patch : 세번째 숫자를 올려줌 v0.0.1
 version-resolver:
   major:
     labels:
@@ -20,5 +38,11 @@ version-resolver:
     labels:
       - 'patch'
   default: patch
+
+# 릴리즈 노트의 전체 형식
+#   - $CHANGES : 머지된 PR들의 리스트, categories에 의해 분류되지 않은 PR은 맨 위로
+#   - $PREVIOUS_TAG : 이전 버전에 대한 태그
+#   - $CONTRIBUTORS : 프로젝트 현 릴리즈 기여자 목록
+
 template: |
   $CHANGES
